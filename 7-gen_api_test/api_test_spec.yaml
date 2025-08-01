@@ -1,0 +1,138 @@
+```yaml
+# API Test Plan for eventmesh-pro
+
+# Auth Routes
+
+/auth/login:
+  - test_case: Successful login with valid credentials
+    http_method: POST
+    endpoint: /auth/login
+    request_payload:
+      email: test@example.com
+      password: password123
+    expected_status_code: 200
+    expected_response_body:  # Expecting a JWT token
+      token: string
+  - test_case: Login with invalid email
+    http_method: POST
+    endpoint: /auth/login
+    request_payload:
+      email: invalid_email
+      password: password123
+    expected_status_code: 401
+    expected_response_body:
+      error: string
+  - test_case: Login with invalid password
+    http_method: POST
+    endpoint: /auth/login
+    request_payload:
+      email: test@example.com
+      password: wrong_password
+    expected_status_code: 401
+    expected_response_body:
+      error: string
+  - test_case: Login with missing email
+    http_method: POST
+    endpoint: /auth/login
+    request_payload:
+      password: password123
+    expected_status_code: 400
+    expected_response_body:
+      error: string
+  - test_case: Login with missing password
+    http_method: POST
+    endpoint: /auth/login
+    request_payload:
+      email: test@example.com
+    expected_status_code: 400
+    expected_response_body:
+      error: string
+
+
+# Project Routes
+
+/projects/create:
+  - test_case: Create project with valid data (authorized)
+    http_method: POST
+    endpoint: /projects/create
+    request_payload:
+      name: Test Project
+      description: This is a test project
+    expected_status_code: 201
+    expected_response_body:
+      id: string
+      name: string
+      description: string
+  - test_case: Create project with invalid data
+    http_method: POST
+    endpoint: /projects/create
+    request_payload:
+      name: "" # Empty name
+    expected_status_code: 400
+    expected_response_body:
+      error: string
+  - test_case: Create project (unauthorized)
+    http_method: POST
+    endpoint: /projects/create
+    request_payload:
+      name: Test Project
+      description: This is a test project
+    expected_status_code: 401
+    expected_response_body:
+      error: string
+
+# User Routes
+
+/users/profile:
+  - test_case: Get user profile (authorized)
+    http_method: GET
+    endpoint: /users/profile
+    expected_status_code: 200
+    expected_response_body:
+      id: string
+      email: string
+      # ... other user details
+  - test_case: Get user profile (unauthorized)
+    http_method: GET
+    endpoint: /users/profile
+    expected_status_code: 401
+    expected_response_body:
+      error: string
+
+
+# Component Routes
+
+/components/create:
+  - test_case: Create component with valid data (authorized)
+    http_method: POST
+    endpoint: /components/create
+    request_payload:
+      name: Test Component
+      type: button
+      projectId: "some-project-id" # Assuming project ID is required
+    expected_status_code: 201
+    expected_response_body:
+      id: string
+      name: string
+      type: string
+      projectId: string
+  - test_case: Create component with invalid data
+    http_method: POST
+    endpoint: /components/create
+    request_payload:
+      name: ""
+      type: button
+    expected_status_code: 400
+    expected_response_body:
+      error: string
+  - test_case: Create component (unauthorized)
+    http_method: POST
+    endpoint: /components/create
+    request_payload:
+       name: Test Component
+       type: button
+    expected_status_code: 401
+    expected_response_body:
+      error: string
+
+```

@@ -1,0 +1,60 @@
+erDiagram
+    User {
+        string id PK
+        string email
+        string username
+        string passwordHash
+        string profilePictureUrl
+        timestamp createdAt
+        timestamp updatedAt
+    }
+    Post {
+        string id PK
+        string userId FK
+        string title
+        string content
+        timestamp createdAt
+        timestamp updatedAt
+    }
+    Comment {
+        string id PK
+        string postId FK
+        string userId FK
+        string content
+        timestamp createdAt
+        timestamp updatedAt
+    }
+    Settings {
+        string userId PK FK
+        string notificationPreferences
+        string theme
+        string language
+        timestamp createdAt
+        timestamp updatedAt
+    }
+    PostLikes {
+        string postId PK FK
+        string userId PK FK
+        timestamp createdAt
+    }
+    CommentLikes {
+        string commentId PK FK
+        string userId PK FK
+        timestamp createdAt
+    }
+    UserFollows {
+        string followerId PK FK
+        string followingId PK FK
+        timestamp createdAt
+    }
+
+
+    User ||--o{ Post : creates
+    Post ||--o{ Comment : has
+    User ||--o{ Comment : creates
+    User ||--o{ Settings : has
+    User ||--o{ PostLikes : likes
+    User ||--o{ CommentLikes : likes
+    User ||--o{ UserFollows : follows
+    Post ||--o{ PostLikes : liked by
+    Comment ||--o{ CommentLikes : liked by

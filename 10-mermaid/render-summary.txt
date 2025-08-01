@@ -1,0 +1,32 @@
+EventMesh-pro is an Apache Software Foundation project focused on providing a dynamic cloud-native eventing infrastructure. It aims to be a versatile solution for event-driven architectures, supporting various messaging protocols and offering features for event routing, filtering, and transformation.  It's designed for large-scale, distributed environments.
+
+Here's a breakdown of key features and aspects:
+
+* **Dynamic Pluggable Architecture:**  Supports various messaging protocols like TCP, HTTP, and gRPC. This flexibility allows integration with diverse systems and facilitates gradual migration.  Users can extend its functionalities by developing and plugging in custom protocol plugins.
+
+* **Cloud-Native Design:** Leverages Kubernetes for deployment and management, benefiting from features like auto-scaling, fault tolerance, and resource scheduling. This makes it well-suited for modern cloud environments.
+
+* **Robust Eventing Capabilities:** Provides a comprehensive set of eventing features, including:
+    * **Event Routing:** Directs events to appropriate destinations based on predefined rules or conditions.
+    * **Event Filtering:** Selects specific events based on content or metadata.
+    * **Event Transformation:** Modifies event data before forwarding it to consumers.
+    * **Event Persistence:** Optionally stores events for durability and replayability.
+
+* **Multi-Language Support:** Clients can be developed in various programming languages like Java, Go, and Python, enabling integration with diverse applications.
+
+* **Observability and Monitoring:**  Offers metrics and logging capabilities to monitor system health and performance. This facilitates troubleshooting and performance optimization.
+
+* **Use Cases:** EventMesh-pro is suitable for a variety of use cases, including:
+    * **Microservices Communication:** Enables asynchronous communication between microservices using events.
+    * **Streaming Data Pipelines:**  Facilitates real-time data processing by connecting data sources and processing components via event streams.
+    * **Event-Driven Automation:**  Triggers automated actions based on specific events.
+    * **Hybrid Cloud Eventing:** Bridges event flows between on-premises and cloud environments.
+
+
+**Key Differences from Apache EventMesh (incubating):**
+
+While EventMesh-pro shares some heritage with the Apache EventMesh (incubating) project, it's important to note they are distinct. EventMesh-pro is a commercially supported version with added features and focuses, particularly on enterprise-grade capabilities and support.  Some key distinctions often include enhanced security features, improved performance, and dedicated support from the commercial provider.
+
+**Getting Started and Further Information:**
+
+Information on EventMesh-pro can be challenging to find as open-source documentation is limited due to its commercial nature.  You will likely need to contact the commercial vendor offering EventMesh-pro for documentation, pricing, and support options.  Look for resources like their official website or contact information.
